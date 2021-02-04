@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useCallback } from 'react'
 import { useSelector, shallowEqual, useDispatch } from 'react-redux'
 import logo from 'logo.svg'
 import { Article } from 'components/Article'
@@ -18,7 +18,7 @@ const App: React.FC = () => {
 
   const dispatch: Dispatch<any> = useDispatch()
 
-  const add = React.useCallback(
+  const add = useCallback(
     (article: ArticleSchema) => dispatch(addArticle(article)),
     [addArticle, dispatch],
   )

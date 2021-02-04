@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { Dispatch } from 'redux'
+import React, { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import { ArticleSchema } from 'store/articleSchema'
 
@@ -11,13 +10,13 @@ type Props = {
 export const Article: React.FC<Props> = ({ article, removeArticle }) => {
   const dispatch = useDispatch()
 
-  const deleteArticle = React.useCallback(
+  const deleteArticle = useCallback(
     (currentArticle: ArticleSchema) => dispatch(removeArticle(currentArticle)),
     [dispatch, removeArticle],
   )
 
   return (
-    <div className='Article'>
+    <div>
       <div>
         <h1>{article.title}</h1>
         <p>{article.body}</p>

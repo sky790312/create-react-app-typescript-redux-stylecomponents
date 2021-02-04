@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import { ArticleSchema } from 'store/articleSchema'
 
 type Props = {
@@ -6,7 +6,7 @@ type Props = {
 }
 
 export const ArticleAddForm: React.FC<Props> = ({ add }) => {
-  const [article, setArticle] = React.useState<
+  const [article, setArticle] = useState<
     ArticleSchema | Record<string, unknown>
   >()
 
@@ -23,7 +23,7 @@ export const ArticleAddForm: React.FC<Props> = ({ add }) => {
   }
 
   return (
-    <form onSubmit={addNewArticle} className='Add-article'>
+    <form onSubmit={addNewArticle}>
       <input
         type='text'
         id='title'
