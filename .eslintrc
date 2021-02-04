@@ -1,0 +1,83 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react-hooks"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:react/recommended"
+  ],
+  "overrides": [
+    {
+      "ecmaFeatures": {
+        "jsx": true,
+        "modules": true
+      },
+      "files": ["*.ts", "*.tsx"],
+      "parserOptions": {
+        "extraFileExtensions": [".ts", ".tsx"],
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        /**
+          有時候想保有風格一致性，或是強烈提醒還有剩餘參數。故 OFF
+          例如
+          `(value, key, ...restArgs) => return value + [...restArgs]`
+
+          CAN safely turn off
+        */
+        "@typescript-eslint/no-unused-vars": ["off"],
+        /**
+          return function 必須指明 typing
+        */
+        "@typescript-eslint/explicit-function-return-type": "off",
+        /** npm:eslint-plugin-react-hooks 官方出品 hooks lint rules */
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        /** 現階段不急需此 debugger */
+        "react/display-name": "off",
+        /**
+          ❌ <a alt='alt' href='https:...'></a>
+
+          ⭕️ <a href='https:...' alt='alt'></a>
+          >
+        */
+        "react/jsx-sort-props": "off",
+        "react/prop-types": "off",
+        /** React as a global variable by tsconfig.allowUmdGlobalAccess=true */
+        "react/react-in-jsx-scope": "off",
+
+        /**
+          非字母偶爾能增加可讀性。
+        */
+        "sort-imports": "off",
+        "sort-keys": "off",
+        "no-shadow": "warn"
+      }
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "parser": "babel-eslint",
+      "rules": {
+        "@typescript-eslint/indent": ["error", 2]
+      }
+    },
+    {
+      "files": ["*.config.js"],
+      "parser": "babel-eslint",
+      "env": {
+        "node": true
+      },
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
