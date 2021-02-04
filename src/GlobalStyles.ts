@@ -1,12 +1,12 @@
-import styled from "styled-components";
-import { createGlobalStyle } from "styled-components";
+import styled from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 export const FlexCenterContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-`;
+`
 
 export const GlobalStyles = createGlobalStyle`
   body {
@@ -22,4 +22,4 @@ export const GlobalStyles = createGlobalStyle`
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
-`;
+`
