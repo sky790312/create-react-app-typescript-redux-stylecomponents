@@ -5,9 +5,39 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:react/recommended"
   ],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jest": true,
+    "node": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "react/react-in-jsx-scope": 0,
+    "react/display-name": 0,
+    "react/prop-types": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/explicit-member-accessibility": 0,
+    "@typescript-eslint/indent": 0,
+    "@typescript-eslint/member-delimiter-style": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/no-use-before-define": 0,
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
+    "no-console": [
+      2,
+      {
+        "allow": ["warn", "error"]
+      }
+    ]
+  },
   "overrides": [
     {
       "ecmaFeatures": {
@@ -20,64 +50,9 @@
         "project": "./tsconfig.json"
       },
       "rules": {
-        "@typescript-eslint/no-explicit-any": "off",
-        /**
-          有時候想保有風格一致性，或是強烈提醒還有剩餘參數。故 OFF
-          例如
-          `(value, key, ...restArgs) => return value + [...restArgs]`
-
-          CAN safely turn off
-        */
-        "@typescript-eslint/no-unused-vars": ["off"],
-        /**
-          return function 必須指明 typing
-        */
-        "@typescript-eslint/explicit-function-return-type": "off",
-        /** npm:eslint-plugin-react-hooks 官方出品 hooks lint rules */
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn",
-        /** 現階段不急需此 debugger */
-        "react/display-name": "off",
-        /**
-          ❌ <a alt='alt' href='https:...'></a>
-
-          ⭕️ <a href='https:...' alt='alt'></a>
-          >
-        */
-        "react/jsx-sort-props": "off",
-        "react/prop-types": "off",
-        /** React as a global variable by tsconfig.allowUmdGlobalAccess=true */
-        "react/react-in-jsx-scope": "off",
-
-        /**
-          非字母偶爾能增加可讀性。
-        */
-        "sort-imports": "off",
-        "sort-keys": "off",
-        "no-shadow": "warn"
-      }
-    },
-    {
-      "files": ["*.js", "*.jsx"],
-      "parser": "babel-eslint",
-      "rules": {
-        "@typescript-eslint/indent": ["error", 2]
-      }
-    },
-    {
-      "files": ["*.config.js"],
-      "parser": "babel-eslint",
-      "env": {
-        "node": true
-      },
-      "rules": {
-        "@typescript-eslint/no-var-requires": "off"
+        "react-hooks/exhaustive-deps": "warn"
       }
     }
-  ],
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  }
+  ]
 }
